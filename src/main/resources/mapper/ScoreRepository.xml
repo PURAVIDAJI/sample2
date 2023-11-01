@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sample2.repository.ScoreRepository">
+    <select id="findAll"
+            resultType="Score">
+        SELECT id,point
+        FROM score
+
+</select>
+
+    <select id="findById"
+            resultType="Score">
+        SELECT id,point
+        FROM score
+        WHERE id = #{id}
+    </select>
+
+    <insert id = "id" parameterType="Score"
+            useGeneratedKeys="true"
+            keyProperty="id">
+    INSERT into student(point)
+    VALUES (#{point})
+    </insert>
+
+    <update id="updateScore" parameterType="Score">
+    UPDATE score
+    SET point=#{point}
+    WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="Score">
+    DELETE FROM student
+    WHERE id = #{id}
+    </delete>
+</mapper>

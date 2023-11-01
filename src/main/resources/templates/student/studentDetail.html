@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<h3>Student Detail Info</h3>
+<hr>
+
+<ul th:each="d : ${detail}">
+    <li>Student ID : <span th:text="${d.getId}"></span></li>
+    <li>Student Name : <span th:text="${d.getName}"></span></li>
+    <li>Student University : <span th:text="${d.getUniv}"></span></li>
+    <li>Student Birthday : <span th:text="${d.getBirth}"></span></li>
+    <li>Student Email : <span th:text="${d.getEmail}"></span></li>
+    <li>Student Point : <span th:text="${d.getPoint}"></span></li>
+</ul>
+<hr>
+
+<form th:object="${detail}"
+      th:action="@{/student/update/{id}(id=${detail.getId()})}">
+    <button type="submit">SCORE EDIT</button>
+</form>
+<a th:href="@{/student/list}" >
+    <button type="submit">BACK</button>
+</a>
+
+
+
+</body>
+</html>

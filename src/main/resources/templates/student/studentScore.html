@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h3>Student Score Edit</h3>
+<hr>
+<h4>Current info</h4>
+
+
+<ul th:each="s : ${selected}">
+    <li>Student ID : <span th:text="${s.getId}"></span></li>
+    <li>Student Name : <span th:text="${s.getName}"></span></li>
+    <li>Student Point : <span th:text="${s.getPoint}"></span></li>
+</ul>
+<hr>
+<h4>Adding Score</h4>
+
+<form th:object="${selected}" th:action="@{/student/update/{id}(id=${selected.getId()})}" method="post" >
+    <!--    action="@" method="post">-->
+    <ul>
+           <input type="text" name="studentId" th:field="*{id}" readonly="readonly" hidden="hidden">
+
+        <li>
+            점수추가 : <input type="text" name="point" th:field="*{point}">
+        </li>
+    </ul>
+    <hr>
+    <input type="submit" value="calculate again">
+
+</form>
+
+
+</body>
+</html>

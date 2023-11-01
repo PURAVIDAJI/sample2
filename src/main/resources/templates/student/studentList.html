@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h3>Student List</h3>
+<hr>
+<table>
+    <tr>
+    <th>Student ID</th><th>Name</th><th>Univ</th><th>Birth</th><th>Email</th><th>Point</th><th>Score Update</th><th>Delete</th>
+    </tr>
+    <tr th:each="s : ${students}">
+        <td th:text="${s.getId()}">id</td>
+        <td>
+            <a th:href="@{/student/detail/{id}(id=${s.getId()})}" th:text="${s.getName()}">
+            </a>
+        </td>
+
+        <td th:text="${s.getUniv()}"></td>
+        <td th:text="${s.getBirth()}">이름</td>
+        <td th:text="${s.getEmail()}">이름</td>
+        <td th:text="${s.getPoint()}">이름</td>
+        <td>
+            <form th:action="@{/student/update/{id}(id=${s.getId()})}">
+                <button type="submit">EDIT</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/student/delete/{id}(id=${s.getId()})}" method="post">
+                <button type="submit">DELETE</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h3>Student Registration</h3>
+<hr>
+<form th:action="@{/student/register}">
+    <button type="submit">등록하기</button>
+</form>
+
+
+</body>
+</html>
